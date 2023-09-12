@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-image: url(https://wallpapercave.com/wp/wp8121942.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+        button{
+            width: 150px;
+            background-color: white;
+            font-weight: bold;
+            color: blue;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 2px;
+            margin-top: 24px;    
+        }
+        .twoplayers{
+            justify-content: space-around;
+            display: flex;
+        }
+        .player-container{
+            margin: 20px;
+        }
+        @media only screen and (max-width: 768px) {
+            body {
+                background-color: lightblue;
+                background-image: url(https://cdn.wallpapersafari.com/98/91/e5XJQY.jpg);
+                background-repeat: repeat;
+            }
+        }
+    </style>
+    <title>Rock Paper Scissor</title>
+</head>
+<body>
+
+    <h1>Rock Paper Scissor</h1>
+    <div class="twoplayers">
+        <div class="player-container">
+            <h2>Player 1</h2>
+            <span id="hand1">_</span>
+            <br>
+            <button onclick="startGame1()">Start Game</button>
+        </div>
+        <div class="player-container">
+            <h2>player 2</h2>
+            <span id="hand2">_</span>
+            <br>
+            <button onclick="startGame2()">Start Game</button>
+        </div>    
+    </div>
+    
+    <br>
+    <button onclick="Result()">Result</button>
+    <p id="result"></p>
+
+
+    <script>
+        let hand1 = ["rock","paper","scissor"];
+        let hand2 = ["rock","paper","scissor"];
+        let results = document.getElementById("result");
+        function randomfunc(){
+           let randomSelect = Math.floor(Math.random()*3);
+           return randomSelect; 
+        }
+        let hand1_result;
+        let hand2_result;
+
+        function startGame1(){
+        hand1_result = hand1[randomfunc()];
+        let player1 = document.getElementById("hand1");
+        player1.textContent = hand1_result;
+        return hand1_result
+        }
+        function startGame2(){
+        hand2_result = hand2[randomfunc()];
+        let player2 = document.getElementById("hand2");
+        player2.textContent = hand2_result;
+        return hand2_result;
+        }
+
+       
+
+        function Result(){
+            let hand1_results = hand1_result;
+            // console.log(hand1_results)
+            let hand2_results = hand2_result;
+            // console.log(hand1_results)
+            if(hand1_results === hand2_results){
+            // console.log("It's a tie");
+            results.textContent = "It's a tie";
+            }else if(hand1_results === "rock" && hand2_results=== "paper"){
+                // console.log("hand2 wins");
+                results.textContent = "player 2 wins";
+            }else if(hand1_results === "rock" && hand2_results === "scissor"){
+                // console.log("hand1 wins");
+                results.textContent = "player 1 wins";
+            }else if(hand1_results === "paper" && hand2_results === "rock"){
+                // console.log("hand1 wins");
+                results.textContent = "player 1 wins";
+            }else if(hand1_results === "paper" && hand2_results === "scissor"){
+                // console.log("hand2 wins");
+                results.textContent = "player 2 wins";
+            }else if(hand1_results === "scissor" && hand2_results === "rock"){
+                // console.log("hand2 wins");
+                results.textContent = "player 2 wins";
+            }else if(hand1_results === "scissor" && hand2_results === "paper"){
+                // console.log("hand1 wins");
+                results.textContent = "player 1 wins";
+            }else{
+                // console.log("something went wrong");
+                results.textContent = "Something went wrong";
+            }
+        
+        }
+
+        
+
+        
+    </script>
+</body>
+</html>
